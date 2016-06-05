@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Dimensions, Text, View, ListView, TouchableHighlight } from 'react-native';
-import PreviewItem from '../PreviewItem';
+import PreviewItem from '../../components/PreviewItem';
 import Calendar from 'react-native-calendar';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
