@@ -6,3 +6,5 @@
 $ npm install
 $ npm start
 ```
+## Demo
+![Demo gif](demo.gif)
