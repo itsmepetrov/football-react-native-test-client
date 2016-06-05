@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Animated, Text, View, ListView, TouchableHighlight } from 'react-native';
+import { Text, View, ListView, TouchableHighlight } from 'react-native';
+import CalendarPicker from '../../components/CalendarPicker';
 import PreviewItem from '../../components/PreviewItem';
 import Calendar from 'react-native-calendar';
 import { Actions } from 'react-native-router-flux';
@@ -40,10 +41,6 @@ export default class Preview extends Component {
     fetchMatchesForDate: PropTypes.func.isRequired
   }
 
-  state = {
-    fadeAnim: new Animated.Value(this.props.showCalendar ? 0 : -320)
-  }
-
   componentDidMount() {
     const { date, fetchMatchesForDate } = this.props;
     fetchMatchesForDate(date);
@@ -58,27 +55,18 @@ export default class Preview extends Component {
   }
 
   handleDateSelect = (date) => {
-    console.log(date);
-    const { previewChangeDate } = this.props;
+    const { previewChangeDate, previewHideCalendar } = this.props;
     const normalizedDate = (new Date(date)).getTime();
     previewChangeDate(normalizedDate);
-    this.handleHideCalendar();
+    previewHideCalendar();
   }
 
   handleShowCalendar = () => {
     this.props.previewShowCalendar();
-    Animated.timing(
-       this.state.fadeAnim,
-       { toValue: 0 }
-     ).start();
   }
 
   handleHideCalendar = () => {
     this.props.previewHideCalendar();
-    Animated.timing(
-       this.state.fadeAnim,
-       { toValue: -320 }
-     ).start();
   }
 
   handleShowMatchInfo = (matchId) => {
@@ -103,28 +91,19 @@ export default class Preview extends Component {
             />
           }
         />
-        <Animated.View style={[styles.calendar, { bottom: this.state.fadeAnim }]}>
-          <Calendar
-            showControls
-            scrollEnabled
-            startDate={formatDate(date, 'YYYY-MM-DD')}
-            selectedDate={formatDate(date, 'YYYY-MM-DD')}
-            onDateSelect={this.handleDateSelect}
-          />
-          <TouchableHighlight
-            style={styles.closeButton}
-            onPress={this.handleHideCalendar}>
-            <Text style={styles.buttonText}>
-              Close
-            </Text>
-          </TouchableHighlight>
-        </Animated.View>
+        <CalendarPicker
+          open={showCalendar}
+          startDate={formatDate(date, 'YYYY-MM-DD')}
+          selectedDate={formatDate(date, 'YYYY-MM-DD')}
+          onClose={this.handleHideCalendar}
+          onDateSelect={this.handleDateSelect}
+        />
         {!showCalendar &&
           <TouchableHighlight
             style={styles.openButton}
             onPress={this.handleShowCalendar}>
             <Text style={styles.buttonText}>
-              {formatDate(date, 'DD.MM.YYYY')}
+              {formatDate(date, 'DD MMM YYYY')}
             </Text>
           </TouchableHighlight>
         }

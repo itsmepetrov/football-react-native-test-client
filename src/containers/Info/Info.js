@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { ScrollView, Image, Text, View } from 'react-native';
+import MatchTimeInfo from '../../components/MatchTimeInfo';
 import MatchTeamInfo from '../../components/MatchTeamInfo';
 import MatchResultInfo from '../../components/MatchResultInfo';
 import MatchActionsInfo from '../../components/MatchActionsInfo';
@@ -34,8 +35,9 @@ export default class Info extends Component {
     return (
       <ScrollView style={styles.scroll}>
         <MatchTeamInfo match={match} />
-        <MatchResultInfo match={match} />
-        <MatchActionsInfo match={match} />
+        {!match.result && <MatchTimeInfo match={match} />}
+        {match.result && <MatchResultInfo match={match} />}
+        {match.result && <MatchActionsInfo match={match} />}
       </ScrollView>
     );
   }
