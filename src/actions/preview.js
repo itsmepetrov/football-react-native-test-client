@@ -6,6 +6,10 @@ import {
 import { schemas, queries, apiRequest } from '../api';
 import { normalize } from 'normalizr';
 
+// Actions creators for manipulate with selected date and calendar
+// More info about Redux actions you can find here: http://redux.js.org/docs/basics/Actions.html
+
+// Change selected date
 export function previewChangeDate(date) {
   return {
     type: PREVIEW_CHANGE_DATE,
@@ -13,6 +17,7 @@ export function previewChangeDate(date) {
   };
 }
 
+// Show calendar
 export function previewShowCalendar() {
   return {
     type: PREVIEW_SHOW_CALENDAR,
@@ -20,6 +25,7 @@ export function previewShowCalendar() {
   };
 }
 
+// Hide calendar
 export function previewHideCalendar() {
   return {
     type: PREVIEW_HIDE_CALENDAR,

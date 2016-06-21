@@ -16,6 +16,7 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
+// Container for view specific Match
 @connect(infoContainerSelector, mapDispatchToProps)
 export default class Info extends Component {
   static propTypes = {

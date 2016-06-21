@@ -4,11 +4,13 @@ import {
   PREVIEW_HIDE_CALENDAR
 } from '../constants/ActionTypes';
 
+// Reducer initial state
 const initialState = {
   date: 1460494800000, // Date.now(),
   showCalendar: false
 };
 
+// Handle selected date and calendar visibility
 export default function(state = initialState, action) {
   const { type, payload } = action;
 

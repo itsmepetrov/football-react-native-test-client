@@ -29,6 +29,7 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
+// Container for view Matches for specific day
 @connect(previewContainerSelector, mapDispatchToProps)
 export default class Preview extends Component {
   static propTypes = {
@@ -43,12 +44,14 @@ export default class Preview extends Component {
 
   componentDidMount() {
     const { date, fetchMatchesForDate } = this.props;
+    // Fetch mathes for specific date on initial load
     fetchMatchesForDate(date);
   }
 
   componentWillReceiveProps(nextProps) {
     const { date: prevDate, fetchMatchesForDate} = this.props;
     const { date: nextDate } = nextProps;
+    // Fetch mathes for new date
     if (prevDate !== nextDate) {
       fetchMatchesForDate(nextDate);
     }
@@ -70,6 +73,7 @@ export default class Preview extends Component {
   }
 
   handleShowMatchInfo = (matchId) => {
+    // Transition to Match Info page
     Actions.info({ matchId });
     this.handleHideCalendar();
   }

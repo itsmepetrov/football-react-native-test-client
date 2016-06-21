@@ -1,3 +1,6 @@
+// GraphQL queries definition
+
+// Query to get array of Matches for specific date
 export const MATCHES_FOR_DATE = `
   query matches($date: String!) {
     matches(date: $date) {
@@ -31,6 +34,7 @@ export const MATCHES_FOR_DATE = `
   }
 `;
 
+// Query to get Match Info by Match ID
 export const MATCH_INFO = `
   query match($id: ID!) {
     match(id: $id) {

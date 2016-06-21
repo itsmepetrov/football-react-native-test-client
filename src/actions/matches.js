@@ -10,6 +10,13 @@ import { schemas, queries, apiRequest } from '../api';
 import { formatDate } from '../utils/date';
 import { normalize } from 'normalizr';
 
+// Actions creators for fetch Match data
+// We use normalizr to normalize each response from GraphQL server
+// More info about Redux actions and normalize you can find here:
+// - http://redux.js.org/docs/basics/Actions.html
+// - https://github.com/paularmstrong/normalizr
+
+// Fetch Matches for specific date
 export function fetchMatchesForDate(date) {
   return (dispatch) => {
     dispatch({
@@ -29,6 +36,8 @@ export function fetchMatchesForDate(date) {
   }
 }
 
+
+// Fetch Match info by Match ID
 export function fetchMatchInfo(matchId) {
   return (dispatch) => {
     dispatch({

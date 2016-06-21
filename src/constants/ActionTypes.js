@@ -1,3 +1,6 @@
+// Action types definition. Actions must have a type property
+// that indicates the type of action being performed.
+
 export const FETCH_MATCHES_FOR_DATE = 'FETCH_MATCHES_FOR_DATE';
 export const FETCH_MATCHES_FOR_DATE_SUCCESS = 'FETCH_MATCHES_FOR_DATE_SUCCESS';
 export const FETCH_MATCHES_FOR_DATE_ERROR = 'FETCH_MATCHES_FOR_DATE_ERROR';
